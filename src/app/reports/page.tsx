@@ -32,7 +32,7 @@ export default function ReportsPage() {
                     <Filter className="mr-2 h-4 w-4" /> Filter Reports
                 </Button>
             </div>
-            <Card>
+            <Table>
                 <TableHeader>
                     <TableRow>
                         <TableHead>Report ID</TableHead>
@@ -58,7 +58,7 @@ export default function ReportsPage() {
                         </TableRow>
                     ))}
                 </TableBody>
-            </Card>
+            </Table>
             <p className="text-center text-muted-foreground mt-6 text-sm">
                 Automated report generation is a backend feature. This UI demonstrates how reports could be listed and accessed.
             </p>
