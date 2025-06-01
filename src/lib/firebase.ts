@@ -18,6 +18,13 @@ if (!firebaseConfig.apiKey) {
   );
 }
 
+// Check if the Auth Domain is loaded. If not, Firebase will fail.
+if (!firebaseConfig.authDomain) {
+  throw new Error(
+    'Firebase Auth Domain is missing. Please ensure NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN is set in your .env.local file (e.g., your-project-id.firebaseapp.com) and that you have restarted your development server.'
+  );
+}
+
 let app: FirebaseApp;
 if (!getApps().length) {
   app = initializeApp(firebaseConfig);
