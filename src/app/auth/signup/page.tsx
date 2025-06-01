@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Loader2, UserPlus, Mail, KeyRound, UserCircle } from 'lucide-react';
+import { Loader2, UserPlus, Mail, KeyRound } from 'lucide-react';
 
 const signUpFormSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -43,7 +43,7 @@ export default function SignUpPage() {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const { signUpWithEmail, signInWithGoogle } = useAuth();
   const { toast } = useToast();
-  const router = useRouter();
+  // const router = useRouter(); // No longer needed for direct push here
 
   const form = useForm<SignUpFormValues>({
     resolver: zodResolver(signUpFormSchema),
@@ -59,7 +59,7 @@ export default function SignUpPage() {
     try {
       await signUpWithEmail(data.email, data.password);
       toast({ title: 'Account Created', description: 'Welcome to HarvestTrack!' });
-      router.push('/'); // Redirect to dashboard
+      // router.push('/'); // Removed: PrivateRoute will handle redirection
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -76,7 +76,7 @@ export default function SignUpPage() {
     try {
       await signInWithGoogle(); // Use signInWithGoogle, Firebase handles new user creation
       toast({ title: 'Account Created / Signed In', description: 'Welcome!' });
-      router.push('/');
+      // router.push('/'); // Removed: PrivateRoute will handle redirection
     } catch (error: any) {
       toast({
         variant: 'destructive',

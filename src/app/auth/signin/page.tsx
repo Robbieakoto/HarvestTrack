@@ -39,7 +39,7 @@ export default function SignInPage() {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const { signInWithEmail, signInWithGoogle } = useAuth();
   const { toast } = useToast();
-  const router = useRouter();
+  // const router = useRouter(); // No longer needed for direct push here
 
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(signInFormSchema),
@@ -54,7 +54,7 @@ export default function SignInPage() {
     try {
       await signInWithEmail(data.email, data.password);
       toast({ title: 'Signed In', description: 'Welcome back!' });
-      router.push('/'); // Redirect to dashboard or intended page
+      // router.push('/'); // Removed: PrivateRoute will handle redirection
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -71,7 +71,7 @@ export default function SignInPage() {
     try {
       await signInWithGoogle();
       toast({ title: 'Signed In', description: 'Welcome!' });
-      router.push('/');
+      // router.push('/'); // Removed: PrivateRoute will handle redirection
     } catch (error: any) {
       toast({
         variant: 'destructive',
