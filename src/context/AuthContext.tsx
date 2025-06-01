@@ -28,68 +28,62 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Represents initial auth state resolution
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      setLoading(false); // Auth state resolved
     });
     return () => unsubscribe();
   }, []);
 
   const signInWithGoogle = async (): Promise<User | null> => {
-    setLoading(true);
+    // No longer sets context's loading state; page component handles its own button loading state
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
+      setUser(result.user); // Update context user state for immediate feedback
+      // onAuthStateChanged will also fire and set the user
       return result.user;
     } catch (error) {
       console.error('Google sign-in error:', error);
       return null;
-    } finally {
-      setLoading(false);
     }
   };
 
   const signUpWithEmail = async (email: string, pass: string): Promise<User | null> => {
-    setLoading(true);
+    // No longer sets context's loading state
     try {
       const result = await createUserWithEmailAndPassword(auth, email, pass);
-      setUser(result.user);
+      setUser(result.user); // Update context user state for immediate feedback
       return result.user;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Email sign-up error:', error);
       throw error; // Re-throw to be caught by the form
-    } finally {
-      setLoading(false);
     }
   };
 
   const signInWithEmail = async (email: string, pass: string): Promise<User | null> => {
-    setLoading(true);
+    // No longer sets context's loading state
     try {
       const result = await signInWithEmailAndPassword(auth, email, pass);
-      setUser(result.user);
+      setUser(result.user); // Update context user state for immediate feedback
       return result.user;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Email sign-in error:', error);
       throw error; // Re-throw to be caught by the form
-    } finally {
-      setLoading(false);
     }
   };
 
   const logout = async (): Promise<void> => {
-    setLoading(true);
+    // No longer sets context's loading state
     try {
       await firebaseSignOut(auth);
-      setUser(null);
+      setUser(null); // Update context user state for immediate feedback
+      // onAuthStateChanged will also fire and set user to null
     } catch (error) {
       console.error('Sign-out error:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
