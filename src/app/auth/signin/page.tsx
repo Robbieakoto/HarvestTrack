@@ -131,7 +131,7 @@ export default function SignInPage() {
                 </div>
               </div>
 
-              <Button variant="outline" type="button" onClick={handleGoogleSignIn} disabled={isLoading || isGoogleLoading} className="w-full">
+              <Button variant="destructive" type="button" onClick={handleGoogleSignIn} disabled={isLoading || isGoogleLoading} className="w-full">
                 {isGoogleLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <GoogleIcon />}
                 Sign In with Google
               </Button>
