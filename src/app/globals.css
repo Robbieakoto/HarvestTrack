@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,14 +35,15 @@ body {
     --chart-5: 16 72% 75%;
     --radius: 0.5rem;
 
-    --sidebar-background: 60 56% 85%; /* Adjusted sidebar background for light mode */
-    --sidebar-foreground: 16 25% 29%;
-    --sidebar-primary: 120 27% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 16 72% 69%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 60 25% 75%;
-    --sidebar-ring: 16 72% 69%;
+    /* HarvestTrack Sidebar Customizations */
+    --sidebar-background: 214 14% 22%; /* #303842 */
+    --sidebar-foreground: 0 0% 100%;   /* white */
+    --sidebar-primary: 123 42% 48%; /* #45AD4A - Can be same as accent-foreground if primary focus is text */
+    --sidebar-primary-foreground: 0 0% 100%; /* Text on primary elements in sidebar */
+    --sidebar-accent: transparent; /* No background change on hover/active for menu buttons */
+    --sidebar-accent-foreground: 123 42% 48%; /* #45AD4A for text on hover/active */
+    --sidebar-border: 214 14% 30%; /* Slightly lighter border for the dark sidebar */
+    --sidebar-ring: 123 42% 48%;   /* #45AD4A for focus rings */
   }
 
   .dark {
@@ -65,14 +67,15 @@ body {
     --input: 30 10% 30%;
     --ring: 16 72% 60%;
 
-    --sidebar-background: 30 10% 9%; /* Adjusted sidebar background for dark mode */
-    --sidebar-foreground: 45 30% 85%;
-    --sidebar-primary: 120 27% 55%;
+    /* HarvestTrack Sidebar Customizations - ensure consistency if sidebar is always dark */
+    --sidebar-background: 214 14% 22%; /* #303842 */
+    --sidebar-foreground: 0 0% 100%;   /* white */
+    --sidebar-primary: 123 42% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 16 72% 60%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 30 10% 25%;
-    --sidebar-ring: 16 72% 60%;
+    --sidebar-accent: transparent;
+    --sidebar-accent-foreground: 123 42% 48%; /* #45AD4A */
+    --sidebar-border: 214 14% 30%;
+    --sidebar-ring: 123 42% 48%;
   }
 }
 
