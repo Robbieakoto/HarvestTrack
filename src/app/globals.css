@@ -21,18 +21,18 @@ body {
     --secondary-foreground: 16 25% 29%;
     --muted: 60 30% 85%;
     --muted-foreground: 60 10% 45%;
-    --accent: 16 72% 69%; /* #E9967A Warm Orange */
+    --accent: 25 98% 67%; /* #FEA158 New Orange */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 60 25% 80%;
     --input: 60 25% 80%;
-    --ring: 16 72% 69%; /* Warm Orange for ring focus */
+    --ring: 25 98% 67%; /* New Orange for ring focus */
     --chart-1: 120 27% 55%;
-    --chart-2: 16 72% 60%;
+    --chart-2: 25 98% 62%;
     --chart-3: 30 30% 50%;
     --chart-4: 120 27% 75%;
-    --chart-5: 16 72% 75%;
+    --chart-5: 25 98% 70%;
     --radius: 0.5rem;
 
     /* HarvestTrack Sidebar Customizations */
@@ -59,13 +59,13 @@ body {
     --secondary-foreground: 45 30% 85%;
     --muted: 30 10% 25%;
     --muted-foreground: 45 30% 70%;
-    --accent: 16 72% 60%; /* Slightly muted orange */
+    --accent: 25 98% 58%; /* #FC923C Darker New Orange */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
     --border: 30 10% 30%;
     --input: 30 10% 30%;
-    --ring: 16 72% 60%;
+    --ring: 25 98% 58%; /* Darker New Orange for ring focus */
 
     /* HarvestTrack Sidebar Customizations - ensure consistency if sidebar is always dark */
     --sidebar-background: 214 14% 22%; /* #303842 */
