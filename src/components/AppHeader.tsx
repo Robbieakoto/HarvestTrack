@@ -76,7 +76,7 @@ export default function AppHeader() {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : !loading && !user ? (
-           <Button asChild variant="outline" size="sm">
+           <Button asChild size="sm">
             <Link href="/auth/signin">
               <LogIn className="mr-2 h-4 w-4" />
               Sign In
