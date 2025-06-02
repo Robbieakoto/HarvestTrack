@@ -76,7 +76,7 @@ export default function DashboardPage() {
                 </p>
               </div>
             ))}
-             <Button variant="outline" className="w-full mt-4">View All Activity</Button>
+             <Button variant="default" className="w-full mt-4">View All Activity</Button>
           </CardContent>
         </Card>
 
@@ -96,7 +96,7 @@ export default function DashboardPage() {
                 className="rounded-lg object-cover"
               />
             </div>
-            <Button variant="outline" className="w-full mt-4">Go to Full Map</Button>
+            <Button variant="default" className="w-full mt-4">Go to Full Map</Button>
           </CardContent>
         </Card>
       </div>
