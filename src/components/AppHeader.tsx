@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Leaf, LogOut, UserCircle, LogIn } from 'lucide-react';
+import { Sprout, LogOut, UserCircle, LogIn } from 'lucide-react'; // Changed Leaf to Sprout
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
@@ -38,7 +38,7 @@ export default function AppHeader() {
       <div className="flex items-center gap-2">
         <SidebarTrigger className="block md:hidden" />
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base">
-          <Leaf className="h-6 w-6 text-primary" />
+          <Sprout className="h-6 w-6 text-primary" /> {/* Changed Leaf to Sprout */}
           <span className="font-headline text-xl">HarvestTrack</span>
         </Link>
       </div>
