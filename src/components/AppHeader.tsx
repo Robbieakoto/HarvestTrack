@@ -34,7 +34,7 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-background px-4 py-6 md:px-6">
+    <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-white px-4 py-6 md:px-6">
       <div className="flex items-center gap-2">
         <SidebarTrigger className="block md:hidden" />
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base">
@@ -76,7 +76,7 @@ export default function AppHeader() {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : !loading && !user ? (
-           <Button asChild size="sm">
+           <Button asChild size="sm" variant="default">
             <Link href="/auth/signin">
               <LogIn className="mr-2 h-4 w-4" />
               Sign In
