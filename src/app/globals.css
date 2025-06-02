@@ -11,7 +11,7 @@ body {
   :root {
     --background: 120 11% 96%; /* #F4F7F4 */
     --foreground: 16 25% 29%; /* #5D4037 Dark Brown */
-    --card: 60 50% 93%;
+    --card: 60 50% 99%; /* #FBFCFA */
     --card-foreground: 16 25% 29%;
     --popover: 60 50% 93%;
     --popover-foreground: 16 25% 29%;
