@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -10,6 +11,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarFooter,
+  useSidebar, // Import useSidebar
 } from '@/components/ui/sidebar';
 import { Leaf, LayoutDashboard, MapPin, FileText, BrainCircuit, ScanLine } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -26,6 +28,13 @@ const navItems = [
 export default function AppSidebarNav() {
   const pathname = usePathname();
   const [isQrModalOpen, setIsQrModalOpen] = React.useState(false);
+  const { isMobile, setOpenMobile } = useSidebar(); // Get mobile state and setter
+
+  const handleNavLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false); // Close mobile sidebar on link click
+    }
+  };
 
   return (
     <>
@@ -44,6 +53,7 @@ export default function AppSidebarNav() {
                     asChild
                     isActive={pathname === item.href}
                     tooltip={{ children: item.label, side: 'right', align: 'center' }}
+                    onClick={handleNavLinkClick} // Add onClick handler here
                   >
                     <a>
                       <item.icon />
