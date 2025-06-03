@@ -197,7 +197,7 @@ export default function AccountSettingsPage() {
                         onChange={handleFileChange}
                       />
                     </FormControl>
-                    <FormDescription>Recommended: Square image, less than 2MB.</FormDescription>
+                    <FormDescription>Recommended: Square image, less than 5MB.</FormDescription>
                     <FormMessage />
                     </div>
                   </FormItem>
