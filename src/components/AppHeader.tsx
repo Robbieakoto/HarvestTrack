@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Truck, LogOut, UserCircle, LogIn } from 'lucide-react'; // Changed Sprout to Truck
+import { Truck, LogOut, UserCircle, LogIn, Settings } from 'lucide-react'; // Added Settings
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
@@ -33,12 +33,16 @@ export default function AppHeader() {
     }
   };
 
+  const handleAccountSettings = () => {
+    router.push('/account'); // Navigate to a new /account page
+  };
+
   return (
     <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-white px-4 py-6 md:px-6">
       <div className="flex items-center gap-2">
         <SidebarTrigger className="block md:hidden" />
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base">
-          <Truck className="h-8 w-8 text-primary" /> {/* Changed icon to Truck */}
+          <Truck className="h-8 w-8 text-primary" />
           <span className="font-headline text-2xl">HarvestTrack</span>
         </Link>
       </div>
@@ -69,6 +73,11 @@ export default function AppHeader() {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={handleAccountSettings} className="cursor-pointer">
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Account Settings</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Sign out</span>
@@ -87,3 +96,4 @@ export default function AppHeader() {
     </header>
   );
 }
+
