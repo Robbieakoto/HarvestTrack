@@ -8,8 +8,16 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { FileText, Download, Filter, Activity } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { format } from 'date-fns';
 
-const initialMockReports = [
+interface Report {
+  id: string;
+  title: string;
+  date: string;
+  type: string;
+}
+
+const initialMockReportsData: Report[] = [
   { id: "REP001", title: "Q3 Transit Time Analysis", date: "2023-10-05", type: "Transit Analysis" },
   { id: "REP002", title: "September Delay Incidents", date: "2023-10-02", type: "Delay Report" },
   { id: "REP003", title: "Produce Spoilage Overview YTD", date: "2023-09-28", type: "Quality Report" },
@@ -18,20 +26,21 @@ const initialMockReports = [
   { id: "REP006", title: "October Projected Delays", date: "2023-10-08", type: "Delay Report" },
 ];
 
-const reportTypes = ["All Types", ...new Set(initialMockReports.map(report => report.type))];
+const allReportTypes = ["All Types", ...new Set(initialMockReportsData.map(report => report.type))];
 
 export default function ReportsPage() {
   const { toast } = useToast();
+  const [reports, setReports] = useState<Report[]>(initialMockReportsData);
   const [selectedReportType, setSelectedReportType] = useState<string>("All Types");
-  const [filteredReports, setFilteredReports] = useState(initialMockReports);
+  const [filteredReports, setFilteredReports] = useState<Report[]>(reports);
 
   useEffect(() => {
     if (selectedReportType === "All Types") {
-      setFilteredReports(initialMockReports);
+      setFilteredReports(reports);
     } else {
-      setFilteredReports(initialMockReports.filter(report => report.type === selectedReportType));
+      setFilteredReports(reports.filter(report => report.type === selectedReportType));
     }
-  }, [selectedReportType]);
+  }, [selectedReportType, reports]);
 
   const handleDownloadReport = (reportId: string, reportTitle: string) => {
     toast({
@@ -42,10 +51,19 @@ export default function ReportsPage() {
   };
 
   const handleGenerateNewReport = () => {
+    const newReportId = `REP${String(reports.length + 1).padStart(3, '0')}`;
+    const newReport: Report = {
+      id: newReportId,
+      title: `Newly Generated Report ${newReportId}`,
+      date: format(new Date(), "yyyy-MM-dd"),
+      type: "General Analysis", // You can make this selectable or more dynamic
+    };
+    setReports(prevReports => [newReport, ...prevReports]); // Add to the beginning of the list
+
     toast({
       title: "Generating Report",
-      description: "New report generation has been initiated. You will be notified upon completion.",
-      action: <Button variant="outline" size="sm">View Status</Button>,
+      description: `New report "${newReport.title}" has been initiated.`,
+      // Removed action: <Button variant="outline" size="sm">View Status</Button>,
     });
     // In a real app, this would trigger a backend process
   };
@@ -72,7 +90,7 @@ export default function ReportsPage() {
                             <SelectValue placeholder="Filter by type..." />
                         </SelectTrigger>
                         <SelectContent>
-                            {reportTypes.map(type => (
+                            {allReportTypes.map(type => ( // Use allReportTypes which is static
                                 <SelectItem key={type} value={type}>{type}</SelectItem>
                             ))}
                         </SelectContent>
@@ -106,15 +124,15 @@ export default function ReportsPage() {
                     )) : (
                         <TableRow>
                             <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
-                                No reports match the selected filter.
+                                No reports match the selected filter or no reports available.
                             </TableCell>
                         </TableRow>
                     )}
                 </TableBody>
             </Table>
-            {initialMockReports.length === 0 && (
+            {reports.length === 0 && initialMockReportsData.length === 0 && ( // Check if initial data was also empty
                  <p className="text-center text-muted-foreground mt-6 text-sm">
-                    No reports available yet. Automated report generation is a backend feature.
+                    No reports available yet. Click "Generate New Report" to create one.
                 </p>
             )}
         </CardContent>
