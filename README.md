@@ -2,7 +2,7 @@
 
 This is a farm produce supply chain tracker. It tracks farm produce from harvest to market.
 
-###Features:
+## Features:
 
 - Scan QR codes at each checkpoint
 
